@@ -1,2 +1,165 @@
-# ExamEcho
-ExamEcho enables teachers to set oral exams and students to answer via guided audio flow—TTS questions, timed thinking, recording, transcription, AI evaluation, and auto-scored results.
+# Exam Management System
+
+A comprehensive exam management system for students and faculty with full CRUD functionality.
+
+## Features
+
+### Student Features
+- View available, upcoming, and completed exams
+- Join live exams
+- View exam history and scores
+- Search and filter exams
+- Real-time countdown for live exams
+
+### Faculty Features
+- Create, edit, and delete exams
+- View dashboard with statistics
+- Manage student list
+- View student details and submissions
+- Monitor exam submissions
+
+## Tech Stack
+
+- **Frontend**: React 19, Vite, Tailwind CSS
+- **Backend**: Express.js (Mock Server)
+- **Database**: JSON file (for demo purposes)
+- **Routing**: React Router DOM
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd my-project-exam
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+### Running the Application
+
+#### Option 1: Run Both Server and Frontend Together (Recommended)
+```bash
+npm run dev:all
+```
+
+This will start:
+- Mock API Server on `http://localhost:3001`
+- Frontend Development Server on `http://localhost:5173`
+
+#### Option 2: Run Separately
+
+Terminal 1 - Start the mock server:
+```bash
+npm run server
+```
+
+Terminal 2 - Start the frontend:
+```bash
+npm run dev
+```
+
+### Access the Application
+
+- **Frontend**: http://localhost:5173
+- **API Server**: http://localhost:3001
+
+## Login Credentials
+
+### Student Login
+- Role: Select "Student"
+- Enrollment: Any enrollment number
+- Password: Any password
+
+### Faculty Login
+- Role: Select "Faculty"
+- Email/Username: Any email or username
+- Password: Any password
+
+## Project Structure
+
+```
+my-project-exam/
+├── server/
+│   ├── index.js          # Express mock server
+│   └── database.json     # Demo database (JSON)
+├── src/
+│   ├── components/       # React components
+│   ├── pages/            # Page components
+│   ├── hooks/            # Custom React hooks
+│   ├── services/         # API service layer
+│   └── utils/            # Utility functions
+└── package.json
+```
+
+## API Endpoints
+
+### Student Endpoints
+- `GET /api/student/exams` - Get all exams
+- `GET /api/student/exams/:examId/summary` - Get exam summary
+- `POST /api/student/exams/:examId/start` - Start an exam
+
+### Faculty Endpoints
+- `GET /api/faculty/exams` - Get all faculty exams
+- `GET /api/faculty/stats` - Get dashboard statistics
+- `POST /api/faculty/exams` - Create new exam
+- `PUT /api/faculty/exams/:examId` - Update exam
+- `DELETE /api/faculty/exams/:examId` - Delete exam
+- `GET /api/faculty/students` - Get all students
+- `GET /api/faculty/students/:studentId` - Get student details
+- `GET /api/faculty/exams/:examId/submissions` - Get exam submissions
+
+## Demo Data
+
+The application comes with pre-loaded demo data:
+- 3 Student exams (live, upcoming, finished)
+- 3 Faculty exams
+- 3 Students with sample data
+- Sample exam submissions
+
+## Development
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Preview Production Build
+```bash
+npm run preview
+```
+
+### Run Tests
+```bash
+npm test
+```
+
+## Notes
+
+- The mock server uses a JSON file (`server/database.json`) as the database
+- All data persists in the JSON file during the session
+- The server automatically updates exam statuses based on current time
+- When faculty creates an exam, it's automatically added to student exams
+
+## Troubleshooting
+
+### Port Already in Use
+If port 3001 or 5173 is already in use:
+- Change the server port in `server/index.js`
+- Update the proxy in `vite.config.js`
+
+### Database Not Found
+The server will create `server/database.json` automatically if it doesn't exist.
+
+## License
+
+MIT
